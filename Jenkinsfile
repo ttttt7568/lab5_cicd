@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                sh 'ls'
+                sh 'gradle build'
             }
         }
     }
