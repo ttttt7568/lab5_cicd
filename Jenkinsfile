@@ -9,7 +9,7 @@ pipeline {
             steps {
                 // Run Gradle build
                 sh 'gradle build'
-                sh 'build/libs/hello.jar > output.log'
+                sh 'java -jar build/libs/hello.jar  > output.log'
             }
         }
     }
