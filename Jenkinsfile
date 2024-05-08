@@ -8,17 +8,19 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'gradle build'
-                sh 'java -jar build/libs/hello.jar  > output.log'
+                sh 'java -jar build/libs/hello.jar > output.log'
             }
         }
-    }
         stage('Make archive') {
             steps {
                 sh 'tar -czf hello-${BUILD_NUMBER}.tar.gz build/libs/hello.jar'
                 sh 'tar -rvf hello-${BUILD_NUMBER}.tar.gz output.log'
-                archiveArtifacts artifacts: "hello-${BUILD_NUMBER}.tar.gz", fingerprint: true
             }
         }
     }
+    post {
+        always {
+            archiveArtifacts artifacts: "hello-${BUILD_NUMBER}.tar.gz", fingerprint: true
+        }
+    }
 }
-
