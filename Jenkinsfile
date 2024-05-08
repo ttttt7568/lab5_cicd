@@ -13,8 +13,7 @@ pipeline {
         }
         stage('Make archive') {
             steps {
-                sh 'tar -czf hello-${BUILD_NUMBER}.tar.gz build/libs/hello.jar'
-                sh 'tar -rvf hello-${BUILD_NUMBER}.tar.gz output.log'
+                sh 'tar -czf hello-${BUILD_NUMBER}.tar.gz build/libs/hello.jar output.log'
             }
         }
     }
